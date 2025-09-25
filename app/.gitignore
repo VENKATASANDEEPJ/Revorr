@@ -1,0 +1,10 @@
+# App build files
+/build/
+
+# Release files
+release/
+debug/
+
+# Keystore (if any)
+*.jks
+*.keystore
