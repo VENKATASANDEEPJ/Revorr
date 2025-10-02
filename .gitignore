@@ -30,3 +30,12 @@ Thumbs.db
 
 # Local configuration
 local.properties
+
+# Android specific
+captures/
+output.json
+
+# Keystore files
+*.jks
+*.keystore
+
