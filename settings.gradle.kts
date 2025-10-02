@@ -1,23 +1,23 @@
 pluginManagement {
     repositories {
-        google {
-            content {
-                includeGroupByRegex("com\\.android.*")
-                includeGroupByRegex("com\\.google.*")
-                includeGroupByRegex("androidx.*")
-            }
-        }
-        mavenCentral()
         gradlePluginPortal()
+        google()
+        mavenCentral()
+    }
+    plugins {
+        // versions — keep these stable for Gradle 8.x
+        id("com.android.application") version "8.3.2"
+        id("org.jetbrains.kotlin.android") version "1.9.22"
     }
 }
+
 dependencyResolutionManagement {
-    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
+    repositoriesMode.set(RepositoriesMode.PREFER_SETTINGS)
     repositories {
         google()
         mavenCentral()
     }
 }
 
-rootProject.name = "Revor"
+rootProject.name = "Revorr"
 include(":app")
