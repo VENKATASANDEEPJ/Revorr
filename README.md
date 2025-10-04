@@ -7,12 +7,12 @@ The goal of this project is to explore Android app development using **Kotlin**,
 
 ## 📌 Features (Planned / Implemented)
 
-- ✅ Modern Android project setup with Gradle (Kotlin DSL)  
-- ✅ Activity + Layouts integration  
-- ✅ Clean project structure for scaling  
-- 🔲 Future: Authentication system  
-- 🔲 Future: Dashboard UI with cards & navigation  
-- 🔲 Future: Firebase integration for backend  
+- Modern Android project setup with Gradle (Kotlin DSL).
+- Activity + Layouts integration  
+- Clean project structure for scaling  
+- Future: Authentication system  
+- Future: Dashboard UI with cards & navigation  
+- Future: Firebase integration for backend  
 
 ---
 
