@@ -8,8 +8,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat">
 
+        <!-- SPLASH SCREEN ACTIVITY -->
         <activity
-            android:name=".MainActivity"
+            android:name=".SplashScreenActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -17,6 +18,12 @@
             </intent-filter>
         </activity>
 
+        <!-- MAIN DASHBOARD ACTIVITY -->
+        <activity
+            android:name=".MainActivity"
+            android:exported="false" />
+
     </application>
+
 
 </manifest>
