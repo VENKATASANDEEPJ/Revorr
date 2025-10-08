@@ -56,7 +56,6 @@ To build and run this project locally:
 
 4.Run the app on an emulator or physical device.
 
-just now ive updated by adding splashscreen.xml
 
 
 
