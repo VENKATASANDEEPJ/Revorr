@@ -56,6 +56,8 @@ To build and run this project locally:
 
 4.Run the app on an emulator or physical device.
 
+At present the project is in phase 2(Designing the interface)
+
 
 
 
