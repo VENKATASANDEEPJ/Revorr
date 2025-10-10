@@ -67,6 +67,8 @@ Screenshots.
 ![WhatsApp Image 2025-09-28 at 19 48 06_beeb8b0e](https://github.com/user-attachments/assets/0673caf1-0990-4d04-ba70-07097efdb58a)
 
 
+![WhatsApp Image 2025-10-10 at 11 54 24_8974fccb](https://github.com/user-attachments/assets/b7f40ef8-7112-466a-af83-fd894e4df5ce)
+Added Bottom navigation bar (Tasks | Reminders | Settings)
 
 
 GOALS :
