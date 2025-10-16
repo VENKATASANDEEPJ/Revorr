@@ -6,7 +6,7 @@ pluginManagement {
     }
     plugins {
         // versions — keep these stable for Gradle 8.x
-        id("com.android.application") version "8.3.2"
+        id("com.android.application") version "8.11.2"
         id("org.jetbrains.kotlin.android") version "1.9.22"
     }
 }
