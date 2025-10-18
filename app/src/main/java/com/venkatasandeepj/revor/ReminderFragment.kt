@@ -4,7 +4,6 @@ import android.app.AlertDialog
 import android.os.Bundle
 import android.text.InputType
 import android.view.LayoutInflater
-import android.view.MotionEvent
 import android.view.View
 import android.view.ViewGroup
 import android.widget.EditText
@@ -24,13 +23,14 @@ class ReminderFragment : Fragment() {
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         val view = inflater.inflate(R.layout.fragment_reminder, container, false)
 
+        // views from layout
         remindersRecyclerView = view.findViewById(R.id.remindersRecyclerView)
         val addReminderFab = view.findViewById<FloatingActionButton>(R.id.addReminderFab)
 
-        // adapter expects (reminder: Reminder) -> Unit
+        // adapter expects (MutableList<Reminder>, (Reminder) -> Unit)
         reminderAdapter = ReminderAdapter(reminderList) { reminder ->
             val pos = reminderList.indexOf(reminder)
             if (pos != -1) {
@@ -43,24 +43,9 @@ class ReminderFragment : Fragment() {
         remindersRecyclerView.layoutManager = LinearLayoutManager(requireContext())
         remindersRecyclerView.adapter = reminderAdapter
 
-        // Ensure FAB is above other views and clickable
+        // ensure FAB is clickable and on top
         addReminderFab.bringToFront()
-        addReminderFab.isClickable = true
-        addReminderFab.isFocusable = true
-        addReminderFab.isFocusableInTouchMode = true
-
-        // Debug touch: show toast on raw touch down so we can confirm touch reaches FAB
-        addReminderFab.setOnTouchListener { _, event ->
-            if (event.action == MotionEvent.ACTION_DOWN) {
-                Toast.makeText(requireContext(), "FAB touched (down)", Toast.LENGTH_SHORT).show()
-            }
-            // return false so click event still happens
-            false
-        }
-
-        // Normal click listener (opens dialog)
         addReminderFab.setOnClickListener {
-            Toast.makeText(requireContext(), "Add button clicked", Toast.LENGTH_SHORT).show()
             showAddReminderDialog()
         }
 
@@ -68,26 +53,25 @@ class ReminderFragment : Fragment() {
     }
 
     private fun showAddReminderDialog() {
-        val builder = AlertDialog.Builder(requireContext())
-        builder.setTitle("Add Reminder")
-
         val input = EditText(requireContext())
+        input.hint = "Enter reminder"
         input.inputType = InputType.TYPE_CLASS_TEXT
-        builder.setView(input)
 
-        builder.setPositiveButton("Add") { _, _ ->
-            val text = input.text.toString().trim()
-            if (text.isNotEmpty()) {
-                val reminder = Reminder(text)
-                reminderList.add(reminder)
-                reminderAdapter.notifyItemInserted(reminderList.size - 1)
-            } else {
-                Toast.makeText(requireContext(), "Please enter a reminder", Toast.LENGTH_SHORT).show()
+        AlertDialog.Builder(requireContext())
+            .setTitle("Add Reminder")
+            .setView(input)
+            .setPositiveButton("Add") { dialog, _ ->
+                val text = input.text.toString().trim()
+                if (text.isNotEmpty()) {
+                    val newReminder = Reminder(text)
+                    reminderList.add(newReminder)
+                    reminderAdapter.notifyItemInserted(reminderList.size - 1)
+                } else {
+                    Toast.makeText(requireContext(), "Please enter a reminder", Toast.LENGTH_SHORT).show()
+                }
+                dialog.dismiss()
             }
-        }
-
-        builder.setNegativeButton("Cancel") { dialog, _ -> dialog.dismiss() }
-
-        builder.show()
+            .setNegativeButton("Cancel") { dialog, _ -> dialog.dismiss() }
+            .show()
     }
 }
