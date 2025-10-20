@@ -1,11 +1,11 @@
-# Revorr 🚀
+ Revorr 🚀
 
 Revorr is an Android application currently under development.  
 The goal of this project is to explore Android app development using **Kotlin**, **Jetpack Compose / XML layouts**, and modern Android tools.  
 
 ---
 
-## 📌 Features (Planned / Implemented)
+ 📌 Features (Planned / Implemented)
 
 - Modern Android project setup with Gradle (Kotlin DSL).
 - Activity + Layouts integration  
@@ -16,7 +16,7 @@ The goal of this project is to explore Android app development using **Kotlin**,
 
 ---
 
-## 🛠️ Tech Stack
+🛠️ Tech Stack
 
 - **Language:** Kotlin  
 - **UI:** XML layouts (+ optional Jetpack Compose in future)  
@@ -26,7 +26,7 @@ The goal of this project is to explore Android app development using **Kotlin**,
 
 ---
 
-## 📂 Project Structure
+📂 Project Structure
 
 Revorr/
 ├── app/ # Main application code
