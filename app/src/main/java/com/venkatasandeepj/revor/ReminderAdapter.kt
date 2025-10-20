@@ -3,18 +3,14 @@ package com.venkatasandeepj.revor
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageButton
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 
-class ReminderAdapter(
-    private val reminders: MutableList<Reminder>,
-    private val onDeleteClick: (Reminder) -> Unit
-) : RecyclerView.Adapter<ReminderAdapter.ReminderViewHolder>() {
+class ReminderAdapter(private val reminders: List<String>) :
+    RecyclerView.Adapter<ReminderAdapter.ReminderViewHolder>() {
 
     class ReminderViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        val reminderText: TextView = itemView.findViewById(R.id.reminderText)
-        val deleteButton: ImageButton = itemView.findViewById(R.id.deleteReminder)
+        val textReminder: TextView = itemView.findViewById(R.id.textReminder)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ReminderViewHolder {
@@ -24,11 +20,7 @@ class ReminderAdapter(
     }
 
     override fun onBindViewHolder(holder: ReminderViewHolder, position: Int) {
-        val reminder = reminders[position]
-        holder.reminderText.text = reminder.text
-        holder.deleteButton.setOnClickListener {
-            onDeleteClick(reminder)
-        }
+        holder.textReminder.text = reminders[position]
     }
 
     override fun getItemCount(): Int = reminders.size

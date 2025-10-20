@@ -16,18 +16,18 @@
         app:title="Reminders"
         app:titleTextColor="#FFFFFF" />
 
-    <!-- RecyclerView below toolbar; give top margin equal to toolbar height to avoid overlap -->
+    <!-- RecyclerView -->
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/remindersRecyclerView"
+        android:id="@+id/recyclerViewReminders"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:padding="8dp"
         android:layout_marginTop="?attr/actionBarSize"
         android:clipToPadding="false" />
 
-    <!-- FloatingActionButton on top-right -->
+    <!-- FloatingActionButton -->
     <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/addReminderFab"
+        android:id="@+id/fabAddReminder"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="20dp"
@@ -36,8 +36,6 @@
         android:src="@android:drawable/ic_input_add"
         android:tint="@android:color/white"
         app:backgroundTint="#FF9800"
-        android:clickable="true"
-        android:focusable="true"
-        android:focusableInTouchMode="true"
-        android:elevation="8dp"/>
+        android:elevation="8dp" />
+
 </FrameLayout>
