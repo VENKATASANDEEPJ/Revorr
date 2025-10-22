@@ -8,15 +8,9 @@ import android.view.ViewGroup
 import android.widget.EditText
 import android.widget.Toast
 import androidx.fragment.app.Fragment
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 
 class ReminderFragment : Fragment() {
-
-    private lateinit var recyclerView: RecyclerView
-    private lateinit var reminderAdapter: ReminderAdapter
-    private val reminders = mutableListOf<String>()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -24,13 +18,9 @@ class ReminderFragment : Fragment() {
     ): View? {
         val view = inflater.inflate(R.layout.fragment_reminder, container, false)
 
-        recyclerView = view.findViewById(R.id.recyclerViewReminders)
-        reminderAdapter = ReminderAdapter(reminders)
-        recyclerView.adapter = reminderAdapter
-        recyclerView.layoutManager = LinearLayoutManager(requireContext())
+        val fabAdd: FloatingActionButton = view.findViewById(R.id.fabAddReminder)
 
-        val addButton = view.findViewById<FloatingActionButton>(R.id.fabAddReminder)
-        addButton.setOnClickListener {
+        fabAdd.setOnClickListener {
             showAddReminderDialog()
         }
 
@@ -42,15 +32,13 @@ class ReminderFragment : Fragment() {
         builder.setTitle("Add Reminder")
 
         val input = EditText(requireContext())
-        input.hint = "Enter reminder message"
+        input.hint = "Enter reminder"
         builder.setView(input)
 
         builder.setPositiveButton("Add") { dialog, _ ->
             val reminderText = input.text.toString().trim()
             if (reminderText.isNotEmpty()) {
-                reminders.add(reminderText)
-                reminderAdapter.notifyItemInserted(reminders.size - 1)
-                Toast.makeText(requireContext(), "Reminder added", Toast.LENGTH_SHORT).show()
+                Toast.makeText(requireContext(), "Reminder added: $reminderText", Toast.LENGTH_SHORT).show()
             } else {
                 Toast.makeText(requireContext(), "Please enter a reminder", Toast.LENGTH_SHORT).show()
             }
@@ -61,6 +49,7 @@ class ReminderFragment : Fragment() {
             dialog.cancel()
         }
 
-        builder.show()
+        val dialog = builder.create()
+        dialog.show()
     }
 }
